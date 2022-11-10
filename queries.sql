@@ -21,7 +21,7 @@ SELECT species FROM animals;
 /* transaction two */
 BEGIN;
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
-UPDATE animals SET species = 'pokemon' WHERE name NOT LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
 SELECT species FROM animals;
 COMMIT;
 SELECT species FROM animals;
@@ -34,8 +34,6 @@ ROLLBACK;
 SELECT COUNT(*) FROM ANIMALS;
 
 /* transaction four */
-
-/* Transaction4 */
 
 BEGIN;
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
