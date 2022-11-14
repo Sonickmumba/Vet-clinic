@@ -115,3 +115,36 @@ SELECT vets.name AS vet_name, species.name AS species_name, COUNT(species.name) 
 
 
 /* ----------------------------------------------------------------------------------------------- */
+
+-- DATABASE PERFORMANCE AUDIT
+
+-- We firsT query Without Performance and Normalization
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
+
+-- We now Query without Performance and Normalization using EXPLAIN ANALYZE and note the time it takes
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; -- Excecution time: 3827.152 ms
+
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Exceution Time 1156.495 ms
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Execution Time 4816.854 ms
+
+-- We now implement the actions to improve performance by creating indexes
+
+CREATE INDEX visits_animal_index ON visits(animal_id); -- Excecution Time: 535.796ms
+
+CREATE INDEX visits_vet_index ON visits(vet_id); -- Excecution Time: 767.760ms
+
+CREATE INDEX owners_email_index ON owners(email); -- Excecution Time: 0.147ms
+
+-- We now check the execution time after indexes to improve query performance
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; -- Excecution time: 124.563 ms which has drastically reduced
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Excecution time: 689.216 ms which has drastically reduced
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Excecution time: 71.993 ms which has drastically reduced
+
+--RESULTS
+-- After implementing the actions to improve (by creating indexes) we see that the query performance has improved.
+-- It took less time to query the data from the database
