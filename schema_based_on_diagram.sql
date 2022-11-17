@@ -64,3 +64,11 @@ CREATE TABLE treatments_medical_histories (
     REFERENCES medical_histories (id)
     ON DELETE CASCADE, 
 );
+
+/*created Index for every foreing key */
+CREATE INDEX ON medical_histories (patient_id);
+CREATE INDEX ON invoices (medical_history_id);
+CREATE INDEX ON invoice_items (invoice_id);
+CREATE INDEX ON invoice_items (treatment_id);
+CREATE INDEX ON treatments_medical_histories (medical_history_id);
+CREATE INDEX ON treatments_medical_histories (treatment_id);
