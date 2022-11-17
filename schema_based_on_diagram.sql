@@ -52,15 +52,3 @@ CREATE TABLE invoice_items (
 );
 
 -- Many to Many Relationship Table
-CREATE TABLE treatments_medical_histories (
-    id INT GENERATED ALWAYS AS IDENTITY,
-    treatment_id INT NOT NULL,
-    medical_history_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY(treatment_id)
-    REFERENCES treatments (id)
-    ON DELETE CASCADE
-    FOREIGN KEY (medical_history_id)
-    REFERENCES medical_histories (id)
-    ON DELETE CASCADE, 
-);
