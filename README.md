@@ -17,7 +17,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 - GitHub: [Sonickmumba](https://github.com/Sonickmumba)
 - Twitter: [@Sonick](https://twitter.com/MumbaSonick)
-- LinkedIn: [Sonick Mumba](https://www.linkedin.com/in/sonick-m-301557a2/)
+- LinkedIn: [Sonick Mumba](https://www.linkedin.com/in/sonickmumba)
 
 ## 🤝 Contributing
 
